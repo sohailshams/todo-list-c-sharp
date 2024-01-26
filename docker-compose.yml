@@ -1,0 +1,18 @@
+version: '3.7'
+name: to-do-list
+
+volumes:
+  postgres_data: {}
+
+services:
+  postgres:
+    image: postgres
+    command: postgres -c 'max_connections=10'
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=todolist
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password123
